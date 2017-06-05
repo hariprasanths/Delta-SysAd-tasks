@@ -12,7 +12,7 @@ do
     folder="folder$j"
     sudo mkdir "/home/$user/delta/$folder"
     folder_txt="folder$j.txt"
-    sudo echo $(pwgen -s 10 1) > "/home/$user/delta/folder$j/$folder_txt"
+    sudo echo $(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 10 | head -n 1) > "/home/$user/delta/folder$j/$folder_txt"
   done
   sudo chmod -R 707 "/home/$user"
 done
