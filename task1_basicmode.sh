@@ -1,10 +1,19 @@
 #!/bin/bash
-
+#Script for Task1-Basic mode
+#By - Hariprasanth
+#     103116023
 for ((i=0;i<10;i++))
 do
   user="user$i"
   sudo adduser $user
   sudo mkdir "/home/$user/delta"
+  for ((j=1;j<=10;j++))
+  do
+    folder="folder$j"
+    sudo mkdir "/home/$user/delta/$folder"
+    folder_txt="folder$j.txt"
+    sudo echo $(pwgen -s 10 1) > "/home/$user/delta/folder$j/$folder_txt"
+  done
   sudo chmod -R 707 "/home/$user"
 done
 sudo groupadd root
